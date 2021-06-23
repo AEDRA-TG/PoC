@@ -182,7 +182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8710d788aea72784da702abe79f457e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad952d6c81e19464c9363f165beb1bc7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8aa5e57f0db6ffe4e900b210b2096c68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5efcfb97515cc349bbc793ed429fedc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 44d74ec9fe64b4e48aefea724d0d52eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae01856d09ca4da4086457e98692d773, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f12357c91895d64797b5b7181b94a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spacing: {x: 0, y: 200}
+  spacing: {x: 0, y: 250}
   rotationDuration: 0.3
   rotationEase: 1
   expandDuration: 0.3
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f24cf75e6d0f544e8d6eb2527a674d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 77416eb0a7284e24f9091d71d32c66d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
