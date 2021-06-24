@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ProjectedObject : MonoBehaviour
 {
-    [SerializeField]
+    
+    public int ID { get; set; }
+
     public bool Selected { get; set; }
 
 }
