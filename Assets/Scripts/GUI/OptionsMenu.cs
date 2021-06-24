@@ -28,6 +28,7 @@ public class OptionsMenu : MonoBehaviour
     bool isExpanded;
     Vector2 mainButtonPosition;
     int itemsCount;
+    Vector2[] positions;
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +37,11 @@ public class OptionsMenu : MonoBehaviour
         itemsCount = transform.childCount - 1;
         //inflate array
         optionItems = new OptionsMenuItem[itemsCount];
+        positions = new Vector2[itemsCount];
         for (int i = 0; i < itemsCount; i++)
         {
             optionItems[i] = transform.GetChild(i + 1).GetComponent<OptionsMenuItem>();
+            positions[i] = optionItems[i].transform.position;
             //TODO
             optionItems[i].img.DOFade(0f, 0);
 
@@ -70,7 +73,7 @@ public class OptionsMenu : MonoBehaviour
             for (int i = 0; i < itemsCount; i++)
             {
                 //optionItems[i].trans.position = mainButtonPosition + spacing * (i + 1);
-                optionItems[i].trans.DOMove (mainButtonPosition + spacing * (i + 1), expandDuration).SetEase(expandEase); 
+                optionItems[i].trans.DOMove (positions[i], expandDuration).SetEase(expandEase); 
                 optionItems[i].img.DOFade(1f, expandFadeDuration).From(0f);
             }
         }
