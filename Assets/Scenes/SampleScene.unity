@@ -253,7 +253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 29087560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ab144a1453850409c222e936b7fac2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3490ea38cce0bf84d94f8f2c10eff1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 0}
@@ -340,35 +340,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2022080057278699123, guid: d3d51f729095f3b49960ddb03f32d62c, type: 3}
   m_PrefabInstance: {fileID: 850242870}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &133845939
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'GrafoMaterial
-
-    21572'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3c2a862be8484674ad543a81030aedc8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &170033306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -645,7 +616,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 133845939}
+  - {fileID: 1485557308}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -941,7 +912,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 442957484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ab144a1453850409c222e936b7fac2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3490ea38cce0bf84d94f8f2c10eff1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 0}
@@ -1097,14 +1068,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 630611158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f12357c91895d64797b5b7181b94a1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 718a8c1648fc7a84f9ca59e8884db524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spacing: {x: 0, y: 250}
+  spacing: {x: 0, y: 0}
   rotationDuration: 0.3
   rotationEase: 1
   expandDuration: 0.3
-  collapseDuration: 0.4
+  collapseDuration: 0.3
   expandEase: 27
   collapseEase: 26
   expandFadeDuration: 0.3
@@ -1683,7 +1654,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 975553662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ab144a1453850409c222e936b7fac2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3490ea38cce0bf84d94f8f2c10eff1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 0}
@@ -2172,6 +2143,35 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!21 &1485557308
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'GrafoMaterial
+
+    16238'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3c2a862be8484674ad543a81030aedc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1551516928
 GameObject:
   m_ObjectHideFlags: 0
