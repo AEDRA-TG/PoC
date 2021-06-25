@@ -40,7 +40,7 @@ public class AlternativeObjectSelection : MonoBehaviour
                     hitObject.transform.GetComponent<ProjectedObject>();
                 if (selectedObject != null)
                 {
-                    UpdateSelectedObjectStatus (selectedObject);
+                    SelectObject (selectedObject);
                 }
             }
         }
@@ -62,7 +62,7 @@ public class AlternativeObjectSelection : MonoBehaviour
                         hitObject.transform.GetComponent<ProjectedObject>();
                     if (selectedObject != null)
                     {
-                        UpdateSelectedObjectStatus (selectedObject);
+                        SelectObject (selectedObject);
                     }
                 }
             }
@@ -70,34 +70,39 @@ public class AlternativeObjectSelection : MonoBehaviour
 #endif
     }
 
-    void UpdateSelectedObjectStatus(ProjectedObject selectedObject)
+    public void SelectObject(ProjectedObject selectedObject)
     {
-        // TODO 
-        MeshRenderer meshRenderer = selectedObject.GetComponent<MeshRenderer>();
-        
         // If the 
         if(selectedObjects.Count != 0)
         {
-            foreach (ProjectedObject obj in selectedObjects)
+            ProjectedObject obj = (ProjectedObject)selectedObjects[0];
+            UpdateSelectionStatus(obj);
+            if(selectedObject.ID != obj.ID)
             {
-                obj.Selected = false;
-                meshRenderer.material.color = noSelectedColor;
-                selectedObjects.Remove(obj);
+                UpdateSelectionStatus(selectedObject);
             }
         }
         else
-        {    
-            
-            if (selectedObject.Selected)
-            {
-                selectedObject.Selected = false;
-                meshRenderer.material.color = noSelectedColor;
-            }
-            else
-            {
-                selectedObject.Selected = true;
-                meshRenderer.material.color = selectedColor;
-            }
+        {
+            UpdateSelectionStatus(selectedObject);
         }
+        
     }
+
+    public void UpdateSelectionStatus(ProjectedObject obj){
+        // TODO 
+        MeshRenderer meshRenderer = obj.GetComponent<MeshRenderer>();
+        if(obj.Selected)
+        {
+            obj.Selected = false;
+            meshRenderer.material.color = noSelectedColor;
+            selectedObjects.Remove(obj);
+        }
+        else
+        {
+            obj.Selected = true;
+            meshRenderer.material.color = selectedColor;
+            selectedObjects.Add(obj);
+        }
+    } 
 }
