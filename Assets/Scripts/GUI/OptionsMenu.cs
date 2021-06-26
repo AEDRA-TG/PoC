@@ -74,7 +74,7 @@ public class OptionsMenu : MonoBehaviour
             {
                 //optionItems[i].trans.position = mainButtonPosition + spacing * (i + 1);
                 optionItems[i].trans.DOMove (positions[i], expandDuration).SetEase(expandEase); 
-                optionItems[i].img.DOFade(1f, expandFadeDuration).From(0f);
+                optionItems[i].img.DOFade(0.7f, expandFadeDuration).From(0f);
             }
         }
         //TODO: collapse
