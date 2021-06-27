@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class AlternativeObjectSelection : MonoBehaviour
@@ -15,7 +17,7 @@ public class AlternativeObjectSelection : MonoBehaviour
     private Color selectedColor = Color.red;
 
     [SerializeField]
-    private Color noSelectedColor = Color.gray;
+    private Color noSelectedColor = Color.white;
 
     private ArrayList selectedObjects;
 
@@ -29,6 +31,13 @@ public class AlternativeObjectSelection : MonoBehaviour
 
     private bool multiselectionMode;
 
+    private Image backImage;
+
+    private Image exitMultiSelectionImage;
+
+    private Button backButton;
+
+    private Button exitMultiSelectionButton;
     // ? METHODS
 
     void Start()
@@ -37,6 +46,11 @@ public class AlternativeObjectSelection : MonoBehaviour
         pointerDown = false;
         int count = 0;
         selectedObjects = new ArrayList();
+        backImage = GameObject.Find("BackButton").GetComponent<Image>();
+        exitMultiSelectionImage = GameObject.Find("ExitMultiSelection").GetComponent<Image>();
+        backButton = GameObject.Find("BackButton").GetComponent<Button>();
+        exitMultiSelectionButton = GameObject.Find("ExitMultiSelection").GetComponent<Button>();
+        
         foreach (ProjectedObject obj in projectedObjects)
         {
             obj.ID = count;
@@ -55,12 +69,16 @@ public class AlternativeObjectSelection : MonoBehaviour
         if(multiselectionMode && selectedObjects.Count == 0){
             multiselectionMode = false;
             Debug.Log("MUTISELECTION OFF");
+            Utils.sendToast("Multiselección desactivada");
+            toggleBackButton(true);
         }
 
         if(pointerDown && !multiselectionMode){
             pointerDownTimer += Time.deltaTime;
             if(pointerDownTimer >= requieredHoldTime){
                 Debug.Log("MULTISELECTION ON");
+                Utils.sendToast("Multiselección activada");
+                toggleBackButton(false);
                 multiselectionMode = true;
                 Reset();
             }
@@ -154,5 +172,35 @@ public class AlternativeObjectSelection : MonoBehaviour
         }
     }
 
+    //TODO: order code in different classes
+    public void toggleBackButton(bool visible)
+    {
+        if(visible)
+        {
+            backImage.DOFade(1f, 0);
+            exitMultiSelectionImage.DOFade(0f, 0);
+            backButton.interactable = true;
+            exitMultiSelectionButton.interactable = false; 
+            backButton.transform.SetAsLastSibling();
+        }else
+        {
+            backImage.DOFade(0f, 0);
+            exitMultiSelectionImage.DOFade(1f, 0);
+            backButton.interactable = false;
+            exitMultiSelectionButton.interactable = true;
+            exitMultiSelectionButton.transform.SetAsLastSibling();
+        }
+    }
+
+    public void exitMultiSelectionMode()
+    {
+        Utils.sendToast("Multiselección desactivada");
+        toggleBackButton(true);
+        multiselectionMode = false;
+        while(selectedObjects.Count > 0)
+        {
+           UpdateSelectionStatus((ProjectedObject)selectedObjects[0]); 
+        }
+    }
 
 }

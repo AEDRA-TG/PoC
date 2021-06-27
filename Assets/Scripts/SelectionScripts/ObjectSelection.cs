@@ -10,7 +10,7 @@ public class ObjectSelection : MonoBehaviour
     private Color selectedColor = Color.red;
 
     [SerializeField]
-    private Color noSelectedColor = Color.gray;
+    private Color noSelectedColor = Color.white;
 
     void Update()
     {
