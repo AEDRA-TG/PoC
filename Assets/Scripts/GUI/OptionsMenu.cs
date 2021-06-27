@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+
 public class OptionsMenu : MonoBehaviour
 {
     [Header("Space between menu items")]
@@ -74,7 +75,7 @@ public class OptionsMenu : MonoBehaviour
             {
                 //optionItems[i].trans.position = mainButtonPosition + spacing * (i + 1);
                 optionItems[i].trans.DOMove (positions[i], expandDuration).SetEase(expandEase); 
-                optionItems[i].img.DOFade(1f, expandFadeDuration).From(0f);
+                optionItems[i].img.DOFade(0.7f, expandFadeDuration).From(0f);
             }
         }
         //TODO: collapse
@@ -104,13 +105,16 @@ public class OptionsMenu : MonoBehaviour
         switch(index){
             case 0:
                 Debug.Log("Añadir nodo");
+                Utils.sendToast("Añadir nodo");
                 break;
             case 1:
                 Debug.Log("Eliminar nodo");
+                Utils.sendToast("Eliminar nodo");
                 break;
 
             case 2:
                 Debug.Log("Recorrer ED");
+                Utils.sendToast("Recorrer ED");
                 break;
         }
     }
