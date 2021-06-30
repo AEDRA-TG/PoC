@@ -90,10 +90,12 @@ public class OptionsMenu : MonoBehaviour
         }
         isExpanded = !isExpanded;
         //rotate main button (Optional)
+        /*
         mainButton.transform
             .DORotate(Vector3.forward * 180f, rotationDuration)
             .From (Vector3.zero)
             .SetEase(rotationEase);
+        */
     }
 
     private void OnDestroy() {
