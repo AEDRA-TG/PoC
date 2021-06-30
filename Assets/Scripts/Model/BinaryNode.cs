@@ -1,17 +1,26 @@
 using UnityEngine;
 
-public class Node : ProjectedObject
+public class BinaryNode : ProjectedObject
 {
-    public Node leftChild { get; set; }
-    public Node rightChild { get; set; }
-    public int value { get; set; }
+    [SerializeField]
+    private int value;
+    public BinaryNode leftChild { get; set; }
+    public BinaryNode rightChild { get; set; }
+    
+    public int getValue(){
+        return this.value;
+    }
+    public void setValue(int value){
+        this.value = value;
+    }
 
-    public Node(int value)
+    public BinaryNode(int value, BinaryNode parent )
     {
         this.value = value;
         leftChild = null;
         rightChild = null;
         //TODO: create visual object from father to current node
+        
     }
     public bool addChild(int value)
     {
@@ -24,7 +33,7 @@ public class Node : ProjectedObject
             }
             else
             {
-                leftChild = new Node(value);
+                leftChild = new BinaryNode(value, this);
                 added = true;
             }
 
@@ -37,10 +46,21 @@ public class Node : ProjectedObject
             }
             else
             {
-                rightChild = new Node(value);
+                rightChild = new BinaryNode(value, this);
                 added = true;
             }
         }
         return added;
     }
+    /*
+    public Vector3 getCoordinates(BinaryNode parent){
+        Vector3 pCoordinates = parent.transform.position;
+        if( parent.value > this.value ){
+            //draw left
+
+        }else{
+            //draw right
+        }
+
+    }*/
 }

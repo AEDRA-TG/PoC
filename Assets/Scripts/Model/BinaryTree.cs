@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    public Node root { get; set; }
-
+    [SerializeField]
+    private BinaryNode root;
+    
     public Tree()
     {
         this.root = null;
@@ -17,12 +18,8 @@ public class Tree : MonoBehaviour
         }
         else
         {
-            root = new Node(value);
+            root = new BinaryNode(value, null);
         }
     }
 
-    public void loadTree()
-    {
-
-    }
 }
