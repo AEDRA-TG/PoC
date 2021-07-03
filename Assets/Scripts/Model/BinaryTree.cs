@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class BinaryTree : MonoBehaviour
 {
     [SerializeField]
     private BinaryNode root;
     
-    public Tree()
+    public BinaryTree()
     {
-        this.root = null;
+        //this.root = null;
     }
     //
     public void addChild(int value)
