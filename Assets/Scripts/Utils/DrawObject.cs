@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class DrawObject : MonoBehaviour
+public class DrawObject: MonoBehaviour
 {   
-    [SerializeField]
-    private GameObject prefab;
-    public static void draw(ProjectedObject obj, string unityParent){
-        obj = Instantiate(obj, obj.coordinates, Quaternion.identity);
-        obj.transform.parent = GameObject.Find(unityParent).transform;
+    public static GameObject draw(GameObject prefab, Vector3 coordinates, string unityParent){
+        prefab = Instantiate(prefab, coordinates, Quaternion.identity);
+        prefab.transform.parent = GameObject.Find(unityParent).transform;
+        return prefab.transform.GetChild(0).gameObject;
     }
 }

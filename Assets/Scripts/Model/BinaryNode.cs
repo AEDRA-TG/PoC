@@ -7,6 +7,9 @@ public class BinaryNode : ProjectedObject
     public BinaryNode leftChild { get; set; }
     public BinaryNode rightChild { get; set; }
 
+    [SerializeField]
+    private GameObject prefab;
+
     public int getValue(){ 
         return this.value;
     }
@@ -14,15 +17,17 @@ public class BinaryNode : ProjectedObject
         this.value = value;
     }
 
-    public BinaryNode(int value, BinaryNode parent )
-    {
-        this.value = value;
-        leftChild = null;
-        rightChild = null;
-        calculateCoordinates(parent);
+    public BinaryNode createNode(int value){
         //TODO: get parent name
-        DrawObject.draw(this, "TestTree");
-        
+        Vector3 coordinates = calculateCoordinates(value);
+        GameObject node = DrawObject.draw(prefab, coordinates, "TestTree");
+        //TODO draw edge between parent and child
+        BinaryNode bNode = node.GetComponent<BinaryNode>();
+        bNode.value = value;
+        bNode.leftChild = null;
+        bNode.rightChild = null;
+        bNode.coordinates = coordinates;
+        return bNode;
     }
     public bool addChild(int value)
     {
@@ -37,7 +42,7 @@ public class BinaryNode : ProjectedObject
             }
             else
             {
-                leftChild = new BinaryNode(value, this);
+                leftChild = createNode(value);
                 added = true;
             }
 
@@ -51,7 +56,7 @@ public class BinaryNode : ProjectedObject
             }
             else
             {
-                //rightChild = new BinaryNode(value, this);
+                rightChild = createNode(value);
                 added = true;
             }
         }
@@ -59,16 +64,17 @@ public class BinaryNode : ProjectedObject
     }
     
     
-    public void calculateCoordinates(BinaryNode parent){
-        Vector3 pCoordinates = parent.transform.position;
+    public Vector3 calculateCoordinates(int value){
+        Vector3 pCoordinates = this.transform.position;
         Vector3 cCoordinates; 
-        if( parent.value > this.value ){
+        //we are in the parent
+        if( this.value > value ){
             //draw left
-            cCoordinates = new Vector3 ( (float)pCoordinates.x-1.0f , pCoordinates.y , (float)pCoordinates.z-2.0f);
+            cCoordinates = new Vector3 ( pCoordinates.x-0.5f , pCoordinates.y , pCoordinates.z-0.5f);
         }else{
             //draw right
-            cCoordinates = new Vector3 ( pCoordinates.x+1.0f , pCoordinates.y , pCoordinates.z-2.0f);
+            cCoordinates = new Vector3 ( pCoordinates.x+0.5f , pCoordinates.y , pCoordinates.z-0.5f);
         }
-        this.coordinates = cCoordinates;
+        return cCoordinates;
     }
 }

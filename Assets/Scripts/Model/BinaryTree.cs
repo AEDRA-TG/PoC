@@ -18,7 +18,7 @@ public class BinaryTree : MonoBehaviour
         }
         else
         {
-            root = new BinaryNode(value, null);
+            //root = createNode(value);
         }
     }
 
