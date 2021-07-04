@@ -8,6 +8,7 @@ public class TreeController : MonoBehaviour
         BinaryTree tree = gObj.GetComponent<BinaryTree>();
         tree.addChild(30);
         tree.addChild(25);
+        tree.addChild(5);
     }
 
 }
