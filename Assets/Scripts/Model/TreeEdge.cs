@@ -2,6 +2,6 @@ using UnityEngine;
 
 public class TreeEdge : MonoBehaviour
 {   
-    public Vector3 from { get; set; }
-    public Vector3 to { get; set; }
+    public BinaryNode from { get; set; }
+    public BinaryNode to { get; set; }
 }

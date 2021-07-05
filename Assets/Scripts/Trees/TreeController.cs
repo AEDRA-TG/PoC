@@ -7,8 +7,11 @@ public class TreeController : MonoBehaviour
         GameObject gObj = GameObject.Find("TestTree");
         BinaryTree tree = gObj.GetComponent<BinaryTree>();
         tree.addChild(30);
-        tree.addChild(25);
-        tree.addChild(5);
+        //tree.addChild(5);
+        //tree.addChild(25);
+        //tree.addChild(35);
+        //tree.addChild(40);
+    
     }
 
 }

@@ -3,17 +3,16 @@ using UnityEngine;
 public class BinaryNode : ProjectedObject
 {
     [SerializeField]
+    private GameObject prefab;
+    [SerializeField]
+    private GameObject edgePrefab;
+    [SerializeField]
     private int value;
     public BinaryNode leftChild { get; set; }
     public BinaryNode rightChild { get; set; }
-    public TreeEdge leftEdge { get; set; }
-    public TreeEdge rightEdge { get; set; }
+    public TreeEdge parentEdge { get; set; }
+    public int level { get; set; }
 
-    [SerializeField]
-    private GameObject prefab;
-
-        [SerializeField]
-    private GameObject edgePrefab;
 
     public int getValue(){ 
         return this.value;
@@ -36,20 +35,15 @@ public class BinaryNode : ProjectedObject
         bNode.value = value;
         bNode.leftChild = null;
         bNode.rightChild = null;
-        bNode.coordinates = coordinates;
+        bNode.coordinates = coordinates; 
+        bNode.level = this.level +1;
+        bNode.parentEdge = createTreeEdge(this, bNode);
 
-        if( this.value > value ){
-            //draw left
-            leftEdge = createTreeEdge(this.coordinates, coordinates);
-        }else{
-            //draw right
-            rightEdge = createTreeEdge(this.coordinates, coordinates);
-        }
         return bNode;
     }
-    public bool addChild(int value)
+    public BinaryNode addChild(int value)
     {
-        bool added = false;
+        BinaryNode added = null;
         // Left
         if( value < this.value )
         {
@@ -60,7 +54,7 @@ public class BinaryNode : ProjectedObject
             else
             {
                 leftChild = createNode(value);
-                added = true;
+                added = leftChild;
             }
 
         }
@@ -74,7 +68,7 @@ public class BinaryNode : ProjectedObject
             else
             {
                 rightChild = createNode(value);
-                added = true;
+                added = rightChild;
             }
         }
         return added;
@@ -94,9 +88,9 @@ public class BinaryNode : ProjectedObject
         }
         return cCoordinates;
     }
-    public TreeEdge createTreeEdge(Vector3 from, Vector3 to)
+    public TreeEdge createTreeEdge(BinaryNode from, BinaryNode to)
     {
-        GameObject edge = DrawObject.drawEdge(edgePrefab, from , to, "TestTree");
+        GameObject edge = DrawObject.drawEdge(edgePrefab, from.coordinates , to.coordinates, "TestTree");
         TreeEdge bEdge = edge.GetComponent<TreeEdge>();
         bEdge.from = from;
         bEdge.to = to;
