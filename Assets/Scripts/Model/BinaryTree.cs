@@ -5,7 +5,7 @@ public class BinaryTree : MonoBehaviour
 {
 
     public static float MAX_WIDTH = 2f;
-    public static float MAX_HEIGHT = 2f;
+    public static float MAX_HEIGHT = 1.5f;
     [SerializeField]
     private BinaryNode root;
     public int levels { get; set; }
