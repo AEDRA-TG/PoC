@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5502384659997224894}
   - component: {fileID: 1243032971051550918}
   - component: {fileID: 3980598641188352527}
+  - component: {fileID: 5578156437899507641}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7211552670274638499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0252916, y: 1.0252916, z: 0.33521602}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 6472978483331429967}
   m_RootOrder: 0
@@ -108,6 +109,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979ac1f3631d6f24f9e3c757d59225b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5578156437899507641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211552670274638499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbe8792db00f6a4f8bf81e70aea9291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8822195700286842900
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 8822195700286842900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.155712, y: 1.155712, z: 3.5348608}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5008850171104116401}
   m_Father: {fileID: 0}
