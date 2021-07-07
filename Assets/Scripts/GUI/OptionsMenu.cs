@@ -4,14 +4,6 @@ using DG.Tweening;
 
 public class OptionsMenu : MonoBehaviour
 {
-    [Header("Space between menu items")]
-    [SerializeField] Vector2 spacing;
-
-    [Space] 
-    [Header ("Main button rotation")]
-    [SerializeField] float rotationDuration;
-    [SerializeField] Ease rotationEase; 
-
     [Space] 
     [Header ("Animation")]
     [SerializeField] float expandDuration;
@@ -34,6 +26,7 @@ public class OptionsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("ENTROO START");
         //substract one to exclude the hamburger menu
         itemsCount = transform.childCount - 1;
         //inflate array
@@ -53,7 +46,7 @@ public class OptionsMenu : MonoBehaviour
         mainButton.transform.SetAsLastSibling();
         //save position of hamburguer position
         mainButtonPosition = mainButton.transform.position;
-
+        Debug.Log("TERMINO METODO");
         ResetPositions();
     }
 
@@ -68,6 +61,7 @@ public class OptionsMenu : MonoBehaviour
 
     void ToggleMenu()
     {
+        Debug.Log("ENTROO A TOGLE");
         //TODO: expand
         if (!isExpanded)
         {

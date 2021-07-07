@@ -18,8 +18,9 @@ public class BinaryTree : MonoBehaviour
         nodesByLevel.Add(1);
     }
 
-    public void addChild(int value)
+    public bool addChild(int value)
     {
+        bool created = false;
         root.level = 0; //TODO: Delete this cochinada
         root.parentEdge = null; //TODO: Delete this cochinada
         if (root != null)
@@ -27,6 +28,7 @@ public class BinaryTree : MonoBehaviour
             BinaryNode newNode = root.addChild(value);
             if (newNode != null)
             {
+                created = true;
                 if (newNode.level > this.levels)
                 {
                     this.levels = newNode.level;
@@ -44,6 +46,7 @@ public class BinaryTree : MonoBehaviour
         {
             //root = createNode(value);
         }
+        return created;
     }
 
     public void redrawTree(BinaryNode root, int levels)
