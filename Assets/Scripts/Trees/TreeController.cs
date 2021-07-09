@@ -18,22 +18,27 @@ public class TreeController : MonoBehaviour
         {
             Utils.sendToast("Node not created: " + value);
         }
+        //DrawObject.reposition("ImageTarget");
     }
 
-    /*void Start()
+    void Start()
     {
-        System.Random rand = new System.Random();
-        int value = rand.Next(1,100);
-        GameObject gObj = GameObject.Find("TestTree");
-        BinaryTree tree = gObj.GetComponent<BinaryTree>();
-        bool created = tree.addChild(value);
-        if (created)
+        /*for (int i = 0; i < 6; i++)
         {
-            Utils.sendToast("Node created: " + value);
-        }
-        else
-        {
-            Utils.sendToast("Node not created: " + value);
-        }
-    }*/
+            System.Random rand = new System.Random();
+            int value = rand.Next(1,100);
+            GameObject gObj = GameObject.Find("TestTree");
+            BinaryTree tree = gObj.GetComponent<BinaryTree>();
+            bool created = tree.addChild(value);
+            if (created)
+            {
+                Utils.sendToast("Node created: " + value);
+            }
+            else
+            {
+                Utils.sendToast("Node not created: " + value);
+            }
+        }*/
+        
+    }
 }

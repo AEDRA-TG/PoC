@@ -17,4 +17,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ToastScene.unity
     guid: b2a115e8b33dc814abc124df548bf426
-  m_configObjects: {}
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 30da066ca2aa98649999f1b104b9e751, type: 2}

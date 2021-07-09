@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class BinaryTree : MonoBehaviour
 {
 
-    public static float MAX_WIDTH = 2f;
+    public static float MAX_WIDTH = 3f;
     public static float MAX_HEIGHT = 1.5f;
     [SerializeField]
     private BinaryNode root;
@@ -23,6 +23,7 @@ public class BinaryTree : MonoBehaviour
         bool created = false;
         root.level = 0; //TODO: Delete this cochinada
         root.parentEdge = null; //TODO: Delete this cochinada
+        root.coordinates = root.gameObject.transform.position; //TODO: Delete this cochinada
         if (root != null)
         {
             BinaryNode newNode = root.addChild(value);
@@ -78,7 +79,7 @@ public class BinaryTree : MonoBehaviour
                     currentLevel++;
                     width = (float)(BinaryTree.MAX_WIDTH / (Math.Pow(2, currentLevel) + 1));
                     //this is a new level
-                    z -= height;
+                    y -= height;
                     //find leftmost point in X axis
                     x = root.coordinates.x - BinaryTree.MAX_WIDTH / 2;
                     x += width;

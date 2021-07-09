@@ -41,7 +41,7 @@ public class DrawObject : MonoBehaviour
         Vector3 start = edge.from.coordinates;
         Vector3 end = edge.to.coordinates;
 
-        float width = 0.025f;
+        float width = 0.010f;
         Vector3 offset = end - start;
         Vector3 scale = new Vector3(width, offset.magnitude / 2.0f, width);
         Vector3 position = start + (offset / 2.0f);
@@ -51,5 +51,16 @@ public class DrawObject : MonoBehaviour
         cylinder = cylinder.transform.GetChild(0).gameObject;
         cylinder.transform.up = offset;
         cylinder.transform.localScale = scale;
+    }
+
+    public static void reposition(string unityParent)
+    {
+        float speed = 1;
+        Vector3 imageTargetPosition = GameObject.Find(unityParent).transform.position;
+        Debug.Log(imageTargetPosition);
+        GameObject tree = GameObject.Find("TestTree");
+        tree.transform.position = imageTargetPosition;
+        tree.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+        Debug.Log(tree.transform.position);
     }
 }
