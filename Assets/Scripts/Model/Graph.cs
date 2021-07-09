@@ -12,12 +12,24 @@ public class Graph
         nodes = new List<Node>();
         adjacentMtx = new Dictionary<int, List<int>>();
         coordinates = new List<Coordinate>();
-        for(int k = 0; k < 2; k++){
+        for(int k = 0; k < 5; k++){
             for(int i = 0; i < 3; i++){
                 for(int j = 0; j < 2; j++){
-                    float x =  i*0.6f;
-                    float y = k*0.6f;
-                    float z = j*0.6f;
+                    float x;
+                    float y;
+                    float z;
+                    if(i%2==0){
+                        z =  (j*0.6f) + (k*0.1f);
+                    }
+                    else{
+                        if(j==0){
+                            z = (-0.4f) + (k*0.1f);
+                        }
+                        else
+                            z = (1f) + (k*0.1f);
+                    }
+                    y = (k*0.6f) + (k*0.2f);
+                    x = i*0.6f;
                     Coordinate aux = new Coordinate(z, y, x);
                     coordinates.Add(aux);
                 }

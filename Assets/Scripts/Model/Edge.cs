@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Edge : MonoBehaviour
 {
-
+    private static int edgeCount = 0;
     public static GameObject drawEdge(GameObject edgePrefab, Vector3 start, Vector3 end, string unityParent){
-        //Instantiate cylinder, use one of the points as the point of instantiation.
-        Vector3 midPoint = (start + end)/2;
-        edgePrefab = Instantiate(edgePrefab, midPoint, Quaternion.identity);
-        edgePrefab.transform.parent = GameObject.Find(unityParent).transform;
-        //Look at Transform.LookAt to make the cylinder face the other point.
-        edgePrefab.transform.LookAt(end);
-        //Scale the cylinder based on the distance between the two points.
-        float dist = Vector3.Distance(start, end);
-        Debug.Log(dist);
-        Vector3 scaled = edgePrefab.transform.localScale;
-        edgePrefab.transform.localScale = new Vector3(scaled.x, scaled.y, dist);
-        return edgePrefab.transform.GetChild(0).gameObject;
+        float width = 0.025f;
+        Vector3 offset = end - start;
+        Vector3 scale = new Vector3(width, offset.magnitude / 2.0f, width);
+        Vector3 position = start + (offset / 2.0f);
+
+        GameObject cylinder = Instantiate(edgePrefab, position, Quaternion.identity);
+        edgePrefab.name = "Edge_" + edgeCount;
+        edgeCount++;
+        cylinder.transform.parent = GameObject.Find(unityParent).transform;
+        cylinder = cylinder.transform.GetChild(0).gameObject;
+        cylinder.transform.up = offset;
+        cylinder.transform.localScale = scale;
+
+        return cylinder;
     }
 
 }

@@ -912,7 +912,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 442957486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 557755703}
+        m_TargetAssemblyTypeName: GraphController, Assembly-CSharp
+        m_MethodName: onClickAddNode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &442957489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,7 +1013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d52802572d468c40b805a998caa6fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  edgePrefab: {fileID: 5966341154015988037, guid: d3d51f729095f3b49960ddb03f32d62c, type: 3}
 --- !u!114 &557755703
 MonoBehaviour:
   m_ObjectHideFlags: 0

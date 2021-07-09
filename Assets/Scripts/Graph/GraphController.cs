@@ -14,15 +14,14 @@ public class GraphController : MonoBehaviour
     void Start()
     {
         projectedGraph = new Graph();
-        for(int i = 0; i < 12; i++){
-            Node newNode = projectedGraph.addNode(nodePrefab);
-        }
-        Edge newEdge = projectedGraph.addBidirectionalEdge(0, 1, edgePrefab);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+    
+    public void onClickAddNode(){
+        Node newNode = projectedGraph.addNode(nodePrefab);
     }
 }
