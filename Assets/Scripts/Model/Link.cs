@@ -23,8 +23,6 @@ public class Link : MonoBehaviour
     void doAttraction()
     {
 
-        Debug.Log("ORIGEN: " + sourceRb);
-
         Vector3 forceDirection = sourceRb.transform.position - targetRb.transform.position;
         float distSqr = forceDirection.sqrMagnitude;
 
@@ -59,11 +57,11 @@ public class Link : MonoBehaviour
         c = Color.gray;
         c.a = 0.5f;
 
-        //draw line
+        //Codigo para dibujar la arista y definirle las propiedades visuales
         lineRenderer.material = new Material(Shader.Find("Self-Illumin/Diffuse"));
         lineRenderer.material.SetColor("_Color", c);
-        lineRenderer.startWidth = 0.3f;
-        lineRenderer.endWidth = 0.3f;
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, source.transform.position);
         lineRenderer.SetPosition(1, target.transform.position);
