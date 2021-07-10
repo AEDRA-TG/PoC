@@ -22,4 +22,14 @@ public class Edge : MonoBehaviour
         return cylinder;
     }
 
+    public static bool CreateLink(GameObject edgePrefab, GameObject originNode, GameObject destinationNode){
+        GameObject linkObject = Instantiate(edgePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Link newLink = linkObject.GetComponent<Link>();
+        linkObject.name = "Edge_" + 0;
+        newLink.source = originNode;
+        newLink.target = destinationNode;
+
+        return true;
+    }
+
 }

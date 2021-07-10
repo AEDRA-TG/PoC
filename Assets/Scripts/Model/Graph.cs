@@ -8,6 +8,9 @@ public class Graph
     private Dictionary<int, List<int>> adjacentMtx {get; set;}
     private List<Coordinate> coordinates;
 
+    [SerializeField]
+    private float nodeVectorGenRange =0.5f;
+
     public Graph(){
         nodes = new List<Node>();
         adjacentMtx = new Dictionary<int, List<int>>();
@@ -37,7 +40,7 @@ public class Graph
         }
     }
         
-    public Node addNode(GameObject nodePrefab){
+    /*public Node addNode(GameObject nodePrefab){
         bool spaceFound = false;
         int posCoordinate = 0;
         Node newNode = null;
@@ -56,11 +59,22 @@ public class Graph
             posCoordinate++;
         }
         return newNode;
-    }
+    }*/
 
+    public Node addNode(GameObject nodePrefab){
+        Node newNode = null;
+
+        Vector3 nodePosition = new Vector3(UnityEngine.Random.Range(0, nodeVectorGenRange), UnityEngine.Random.Range(0, nodeVectorGenRange), UnityEngine.Random.Range(0, nodeVectorGenRange));
+        List<int> relations = new List<int>();
+        adjacentMtx.Add(nodes.Count,relations);
+        GameObject objReturn = Node.ShowNode(nodePrefab, nodePosition, nodes.Count);
+        newNode = objReturn.GetComponent<Node>();
+        nodes.Add(newNode);
+        return newNode;
+    }
     
 
-    public Edge addBidirectionalEdge(int origin, int destination, GameObject edgePrefab){
+    /*public Edge addBidirectionalEdge(int origin, int destination, GameObject edgePrefab){
         List<int> aux = adjacentMtx[origin];
         aux.Add(destination);
         adjacentMtx[origin] = aux;
@@ -70,5 +84,30 @@ public class Graph
         GameObject obj = Edge.drawEdge(edgePrefab, coordinates[nodes[origin].posCoordinate].coordinate, coordinates[nodes[destination].posCoordinate].coordinate, "Graph");
         Edge newEdge = obj.GetComponent<Edge>();
         return newEdge;
+    }*/
+
+    public void addBidirectionalEdge(int origin, int destination, GameObject edgePrefab){
+
+        if(!edgeAlreadyExists(origin, destination)){
+            List<int> aux = adjacentMtx[origin];
+            aux.Add(destination);
+            adjacentMtx[origin] = aux;
+            List<int> aux2 = adjacentMtx[destination];
+            aux.Add(origin);
+            adjacentMtx[destination] = aux2;
+
+            GameObject originNode = GameObject.Find("Node_" + origin);
+            GameObject destinationNode = GameObject.Find("Node_" + destination);
+            bool status = Edge.CreateLink(edgePrefab, originNode, destinationNode);
+        }
+
+        
+    }
+
+    private bool edgeAlreadyExists(int origin, int destination){
+        int isCreated;
+        List<int> aux = adjacentMtx[origin];
+        isCreated = aux.IndexOf(destination);
+        return (isCreated > 0)?true:false;
     }
 }
