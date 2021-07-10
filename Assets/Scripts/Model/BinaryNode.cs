@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-
+using DG.Tweening;
 public class BinaryNode : ProjectedObject
 {
     [SerializeField]
@@ -17,7 +17,8 @@ public class BinaryNode : ProjectedObject
     public BinaryNode rightChild { get; set; }
     public TreeEdge parentEdge { get; set; }
     public int level { get; set; }
-
+    
+    private Sequence colorSequence;
 
     public int getValue(){ 
         return this.value;
@@ -36,6 +37,7 @@ public class BinaryNode : ProjectedObject
         Vector3 coordinates = calculateCoordinates(value);
         //--FOR PARA PINTAR EL CAMINO--
         Debug.Log("SIZE: " + nodes.Count);
+        //colorSequence = DOTween.Sequence();
         updateNodesColor(nodes, this.color);
         GameObject node = DrawObject.draw(prefab, coordinates, "TestTree");
         //TODO draw edge between parent and child
@@ -46,6 +48,9 @@ public class BinaryNode : ProjectedObject
         bNode.coordinates = coordinates; 
         bNode.level = this.level +1;
         bNode.parentEdge = createTreeEdge(this, bNode);
+        //TODO Delete this
+        DrawObject.changeColor(bNode.parentEdge, this.color, colorSequence);
+        nodes.Add(bNode);
         StartCoroutine(ExampleCoroutine(nodes));
         return bNode;
     }
@@ -113,9 +118,9 @@ public class BinaryNode : ProjectedObject
         {
             Debug.Log(node.transform.parent.gameObject.name);
             if(node.parentEdge != null ){
-                DrawObject.changeColor(node.parentEdge, color);
+                DrawObject.changeColor(node.parentEdge, color,colorSequence);
             }
-            DrawObject.changeColor(node, color);            
+            DrawObject.changeColor(node, color, colorSequence);            
         }
         Debug.Log("End update");
     }
@@ -124,7 +129,7 @@ public class BinaryNode : ProjectedObject
     IEnumerator ExampleCoroutine(List<BinaryNode> nodes)
     {
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         
         updateNodesColor(nodes, Color.white);
     }

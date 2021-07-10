@@ -5,14 +5,22 @@ public class DrawObject : MonoBehaviour
 {
     public static int POS_NODE = 0;
 
-    public static GameObject
-    draw(GameObject prefab, Vector3 coordinates, string unityParent)
+    public static GameObject draw(GameObject prefab, Vector3 coordinates, string unityParent)
     {
-        prefab = Instantiate(prefab, coordinates, Quaternion.identity);
-        prefab.transform.parent = GameObject.Find(unityParent).transform;
-        prefab.name = "Node_" + (DrawObject.POS_NODE++);
+        GameObject newObject = Instantiate(prefab, coordinates, Quaternion.identity);
+        
+        newObject.transform.parent = GameObject.Find(unityParent).transform;
+        newObject.name = "Node_" + (DrawObject.POS_NODE++);
         DrawObject.POS_NODE++;
-        return prefab.transform.GetChild(0).gameObject;
+
+        newObject = newObject.transform.GetChild(0).gameObject;
+        //TODO: DELETE THIS
+        MeshRenderer mesh = newObject.GetComponent<MeshRenderer>();
+        Material material = new Material(Shader.Find("Standard"));
+        mesh.material = material;
+        mesh.material.color = Color.green;
+
+        return newObject;
     }
 
     public static GameObject drawEdge(GameObject prefab, Vector3 start, Vector3 end, string unityParent)
@@ -63,8 +71,12 @@ public class DrawObject : MonoBehaviour
         tree.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
     }
 
-    public static void changeColor(ProjectedObject obj, Color color){
+    public static void changeColor(ProjectedObject obj, Color color, Sequence colorSequence){
         MeshRenderer mesh = obj.gameObject.GetComponent<MeshRenderer>();
+        Material material = new Material(Shader.Find("Standard"));
+        mesh.material = material;
+        //mesh.material.color = color;
         mesh.material.DOColor(color, 2f);
+        
     }
 }
