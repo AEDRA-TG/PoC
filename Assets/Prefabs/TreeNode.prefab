@@ -142,3 +142,4 @@ MonoBehaviour:
   prefab: {fileID: 516832998983848197}
   edgePrefab: {fileID: 3530161000719299834, guid: 1e350200dab71884db9c64b454c98516, type: 3}
   value: 0
+  color: {r: 0, g: 0.93155813, b: 1, a: 1}

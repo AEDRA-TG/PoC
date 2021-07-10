@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class DrawObject : MonoBehaviour
 {
@@ -57,10 +58,13 @@ public class DrawObject : MonoBehaviour
     {
         float speed = 1;
         Vector3 imageTargetPosition = GameObject.Find(unityParent).transform.position;
-        Debug.Log(imageTargetPosition);
         GameObject tree = GameObject.Find("TestTree");
         tree.transform.position = imageTargetPosition;
         tree.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
-        Debug.Log(tree.transform.position);
+    }
+
+    public static void changeColor(ProjectedObject obj, Color color){
+        MeshRenderer mesh = obj.gameObject.GetComponent<MeshRenderer>();
+        mesh.material.DOColor(color, 2f);
     }
 }

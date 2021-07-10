@@ -11,7 +11,6 @@ public class testController : MonoBehaviour
     // Start is called before the first frame update
     public void AddElement()
     {
-        Debug.Log("ENTROOOOOOOOOOO");
         string unityParent = "ImageTarget";
         Vector3 coordinates = GameObject.Find("ImageTarget").transform.position;
         prefab = Instantiate(prefab, coordinates, Quaternion.identity);

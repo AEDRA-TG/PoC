@@ -26,7 +26,6 @@ public class OptionsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("ENTROO START");
         //substract one to exclude the hamburger menu
         itemsCount = transform.childCount - 1;
         //inflate array
@@ -46,7 +45,6 @@ public class OptionsMenu : MonoBehaviour
         mainButton.transform.SetAsLastSibling();
         //save position of hamburguer position
         mainButtonPosition = mainButton.transform.position;
-        Debug.Log("TERMINO METODO");
         ResetPositions();
     }
 
@@ -61,7 +59,6 @@ public class OptionsMenu : MonoBehaviour
 
     void ToggleMenu()
     {
-        Debug.Log("ENTROO A TOGLE");
         //TODO: expand
         if (!isExpanded)
         {
@@ -100,16 +97,13 @@ public class OptionsMenu : MonoBehaviour
     public void OnItemClick(int index){
         switch(index){
             case 0:
-                Debug.Log("Añadir nodo");
                 Utils.sendToast("Añadir nodo");
                 break;
             case 1:
-                Debug.Log("Eliminar nodo");
                 Utils.sendToast("Eliminar nodo");
                 break;
 
             case 2:
-                Debug.Log("Recorrer ED");
                 Utils.sendToast("Recorrer ED");
                 break;
         }

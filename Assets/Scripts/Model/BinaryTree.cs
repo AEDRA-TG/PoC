@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 public class BinaryTree : MonoBehaviour
 {
@@ -24,9 +25,11 @@ public class BinaryTree : MonoBehaviour
         root.level = 0; //TODO: Delete this cochinada
         root.parentEdge = null; //TODO: Delete this cochinada
         root.coordinates = root.gameObject.transform.position; //TODO: Delete this cochinada
+        
         if (root != null)
         {
-            BinaryNode newNode = root.addChild(value);
+            List<BinaryNode> nodes = new List<BinaryNode>();
+            BinaryNode newNode = root.addChild(value, nodes);
             if (newNode != null)
             {
                 created = true;
