@@ -60,8 +60,8 @@ public class Link : MonoBehaviour
         //Codigo para dibujar la arista y definirle las propiedades visuales
         lineRenderer.material = new Material(Shader.Find("Self-Illumin/Diffuse"));
         lineRenderer.material.SetColor("_Color", c);
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startWidth = 0.03f;
+        lineRenderer.endWidth = 0.03f;
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, source.transform.position);
         lineRenderer.SetPosition(1, target.transform.position);
