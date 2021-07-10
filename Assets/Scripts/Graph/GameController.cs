@@ -4,9 +4,6 @@
 
 public class GameController : MonoBehaviour {
 
-    [SerializeField]
-    private bool verbose = true;
-
     // use BulletUnity or PhysX?
     [SerializeField]
     private bool engineBulletUnity = true;

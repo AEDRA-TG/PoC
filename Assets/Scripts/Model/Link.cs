@@ -33,10 +33,12 @@ public class Link : MonoBehaviour
             //Debug.Log("(Link.FixedUpdate) distSqr: " + distSqr + "/ intendedLinkLengthSqr: " + intendedLinkLengthSqr + " = distSqrNorm: " + distSqrNorm);
             distSqrNorm = distSqr / intendedLinkLengthSqr;
 
+            Debug.Log("Impulso" + distSqrNorm);
             Vector3 targetRbImpulse = forceDirection.normalized * forceStrength * distSqrNorm;
             Vector3 sourceRbImpulse = forceDirection.normalized * -1 * forceStrength * distSqrNorm;
 
             //Debug.Log("(Link.FixedUpdate) targetRb: " + targetRb + ". forceDirection.normalized: " + forceDirection.normalized + ". distSqrNorm: " + distSqrNorm + ". Applying Impulse: " + targetRbImpulse);
+            Debug.Log("Impulso" + targetRbImpulse);
             ((Rigidbody)targetRb as Rigidbody).AddForce(targetRbImpulse);
             //Debug.Log("(Link.FixedUpdate) targetRb: " + sourceRb + ". forceDirection.normalized: " + forceDirection.normalized + "  * -1 * distSqrNorm: " + distSqrNorm + ". Applying Impulse: " + sourceRbImpulse);
             ((Rigidbody)sourceRb as Rigidbody).AddForce(sourceRbImpulse);
@@ -51,6 +53,7 @@ public class Link : MonoBehaviour
 
         lineRenderer = gameObject.AddComponent<LineRenderer>();
 
+        //Codigo para darle las propiedades visuales a la arista.
         //color link according to status
         Color c;
         c = Color.gray;
@@ -59,8 +62,9 @@ public class Link : MonoBehaviour
         //draw line
         lineRenderer.material = new Material(Shader.Find("Self-Illumin/Diffuse"));
         lineRenderer.material.SetColor("_Color", c);
-        lineRenderer.SetWidth(0.3f, 0.3f);
-        lineRenderer.SetVertexCount(2);
+        lineRenderer.startWidth = 0.3f;
+        lineRenderer.endWidth = 0.3f;
+        lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, source.transform.position);
         lineRenderer.SetPosition(1, target.transform.position);
 
@@ -76,7 +80,7 @@ public class Link : MonoBehaviour
     {
         // moved from Start() in Update(), otherwise it won't see runtime updates of intendedLinkLength
         intendedLinkLengthSqr = intendedLinkLength * intendedLinkLength;
-
+        //Metodos que setean el inicio y fin de la arista
         lineRenderer.SetPosition(0, source.transform.position);
         lineRenderer.SetPosition(1, target.transform.position);
     }

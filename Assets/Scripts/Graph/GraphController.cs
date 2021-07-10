@@ -4,44 +4,67 @@ using UnityEngine;
 
 public class GraphController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Grafo
     private Graph projectedGraph;
     [SerializeField]
+
+    //Prefabs
     private GameObject nodePrefab;
     [SerializeField]
     private GameObject edgePrefab;
 
+    //Booleano que indica si queremos que los objetos no se muevan 
+    //(Se pierde la repulsion si esta en true)
     [SerializeField]
     private bool allStatic = false;
 
+    //Valor de fuerza que se aplica sobre los objetos para la repulsión
     [SerializeField]
-    private float repulseForceStrength = 0.1f;
+    private float repulseForceStrength = 0.5f;
+    //Booleano que indica si los nodos se repelen entre ellos o no
     [SerializeField]
     private bool repulseActive = true;
     [SerializeField]
-    private float globalGravityPhysX = 10f;
+    //Valor de la gravedad que tendran los objetos
+    private float globalGravityPhysX = 0f;
+    //Valor de la distancia a la cual se mantendran separados los nodos unos de otros
     [SerializeField]
-    private float nodePhysXForceSphereRadius = 50F;  
+    private float nodePhysXForceSphereRadius = 0.5F;
+    //Valor de la fuerza de acercamiento cuando se agregan aristas
+    [SerializeField]
+    private float linkForceStrength = 6F;
+    //Valor del largo que tendra la arista cuando es creada. 
+    [SerializeField]
+    private float linkIntendedLinkLength = 5F; 
+
+    //Variables unicamente de prueba se usan para conectar aristas
+    [SerializeField]
+    private int originNode;
+    [SerializeField]
+    private int destinationNode;
     void Start()
     {
         projectedGraph = new Graph();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //Setea estos valores a las variables dentro de la clase link
+        Link.intendedLinkLength = linkIntendedLinkLength;
+        Link.forceStrength = linkForceStrength;
     }
     
+    //Metodo que se ejecuta cuando se añade un nodo
     public void onClickAddNode(int nodesCount){
         for(int i = 0; i < nodesCount; i++){
-            Node newNode = projectedGraph.addNode(nodePrefab);
+            projectedGraph.addNode(nodePrefab);
         }
     }
 
+    //Metodo que se ejecuta cuando se añade una arista
     public void onClickAddLink(int linksCount){
-        for(int i = 0; i< linksCount; i++){
-            projectedGraph.addBidirectionalEdge(0,1,edgePrefab);
-        }
+        projectedGraph.addBidirectionalEdge(originNode,destinationNode,edgePrefab);
     }
 
 
@@ -102,6 +125,30 @@ public class GraphController : MonoBehaviour
         set
         {
             nodePhysXForceSphereRadius = value;
+        }
+    }
+
+    public float LinkForceStrength
+    {
+        get
+        {
+            return linkForceStrength;
+        }
+        private set
+        {
+            linkForceStrength = value;
+        }
+    }
+
+    public float LinkIntendedLinkLength
+    {
+        get
+        {
+            return linkIntendedLinkLength;
+        }
+        set
+        {
+            linkIntendedLinkLength = value;
         }
     }
     #endregion

@@ -15,29 +15,6 @@ public class Graph
         nodes = new List<Node>();
         adjacentMtx = new Dictionary<int, List<int>>();
         coordinates = new List<Coordinate>();
-        for(int k = 0; k < 5; k++){
-            for(int i = 0; i < 3; i++){
-                for(int j = 0; j < 2; j++){
-                    float x;
-                    float y;
-                    float z;
-                    if(i%2==0){
-                        z =  (j*0.6f) + (k*0.1f);
-                    }
-                    else{
-                        if(j==0){
-                            z = (-0.4f) + (k*0.1f);
-                        }
-                        else
-                            z = (1f) + (k*0.1f);
-                    }
-                    y = (k*0.6f) + (k*0.2f);
-                    x = i*0.6f;
-                    Coordinate aux = new Coordinate(z, y, x);
-                    coordinates.Add(aux);
-                }
-            }
-        }
     }
         
     /*public Node addNode(GameObject nodePrefab){
@@ -61,16 +38,16 @@ public class Graph
         return newNode;
     }*/
 
-    public Node addNode(GameObject nodePrefab){
+    // METODO PARA AGREGAR UN NODO
+    public void addNode(GameObject nodePrefab){
         Node newNode = null;
-
+        // Se calcula una posición random en el espacio
         Vector3 nodePosition = new Vector3(UnityEngine.Random.Range(0, nodeVectorGenRange), UnityEngine.Random.Range(0, nodeVectorGenRange), UnityEngine.Random.Range(0, nodeVectorGenRange));
         List<int> relations = new List<int>();
         adjacentMtx.Add(nodes.Count,relations);
         GameObject objReturn = Node.ShowNode(nodePrefab, nodePosition, nodes.Count);
         newNode = objReturn.GetComponent<Node>();
         nodes.Add(newNode);
-        return newNode;
     }
     
 
