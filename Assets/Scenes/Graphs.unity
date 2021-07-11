@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 557755699}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AlternativeObjectSelection, Assembly-CSharp
         m_MethodName: exitMultiSelectionMode
         m_Mode: 1
@@ -585,7 +585,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1006396308}
+  - {fileID: 1639809568}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -961,9 +961,9 @@ GameObject:
   m_Component:
   - component: {fileID: 557755700}
   - component: {fileID: 557755703}
-  - component: {fileID: 557755699}
   - component: {fileID: 557755701}
   - component: {fileID: 557755702}
+  - component: {fileID: 557755699}
   m_Layer: 0
   m_Name: AppController
   m_TagString: Untagged
@@ -978,28 +978,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557755698}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5d1c790e92a5e46af969d8242b8a2b, type: 3}
+  m_Script: {fileID: 11500000, guid: a807a14a6051e4847a690073add320fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectedObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  selectedColor: {r: 0.031372536, g: 0.8784314, b: 0.7842533, a: 1}
+  projectedObjects: []
+  selectedColor: {r: 0.13020645, g: 0.8962264, b: 0.8550203, a: 1}
   noSelectedColor: {r: 1, g: 1, b: 1, a: 1}
-  requieredHoldTime: 0.5
 --- !u!4 &557755700
 Transform:
   m_ObjectHideFlags: 0
@@ -1038,7 +1024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081aad9a51615aa47928c593a922ddf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verbose: 1
   engineBulletUnity: 0
 --- !u!114 &557755703
 MonoBehaviour:
@@ -1052,6 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74a65fb50521ad4b880ac6b791bd032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   nodePrefab: {fileID: 8822195700286842900, guid: 1480da346740cc44ca47f92fcbca6cc0, type: 3}
   edgePrefab: {fileID: 5966341154015988037, guid: 48facc43963c9b4458e09e3f447941ef, type: 3}
   allStatic: 0
@@ -1059,6 +1045,10 @@ MonoBehaviour:
   repulseActive: 1
   globalGravityPhysX: 0
   nodePhysXForceSphereRadius: 0.5
+  linkForceStrength: 6
+  linkIntendedLinkLength: 5
+  originNode: 0
+  destinationNode: 1
 --- !u!1 &630611158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,35 +1368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 0}
   trans: {fileID: 0}
---- !u!21 &1006396308
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'GrafoMaterial
-
-    16302'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3c2a862be8484674ad543a81030aedc8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1143014085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,3 +1812,32 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!21 &1639809568
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'GrafoMaterial
+
+    24400'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3c2a862be8484674ad543a81030aedc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+  m_BuildTextureStacks: []

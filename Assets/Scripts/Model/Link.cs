@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Link : MonoBehaviour
 {
-
+    public static Material material;
     public string id;
     public GameObject source;
     public GameObject target;
@@ -54,14 +54,16 @@ public class Link : MonoBehaviour
         //Codigo para darle las propiedades visuales a la arista.
         //color link according to status
         Color c;
-        c = Color.gray;
-        c.a = 0.5f;
+        c = Color.white;
 
         //Codigo para dibujar la arista y definirle las propiedades visuales
-        lineRenderer.material = new Material(Shader.Find("Self-Illumin/Diffuse"));
+        // Default-Skybox
+        // Default Line
+        //lineRenderer.material = new Material(Shader.Find("Self-Illumin/Diffuse"));
+        lineRenderer.material = material;
         lineRenderer.material.SetColor("_Color", c);
         lineRenderer.startWidth = 0.03f;
-        lineRenderer.endWidth = 0.03f;
+        lineRenderer.endWidth = 0.01f;
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, source.transform.position);
         lineRenderer.SetPosition(1, target.transform.position);

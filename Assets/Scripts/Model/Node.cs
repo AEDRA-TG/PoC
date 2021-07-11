@@ -12,11 +12,11 @@ public abstract class Node : MonoBehaviour
 
     protected static GraphController graphControl;
 
-    private string id;
+    private int id;
     private string text;
     private string type;
 
-    public string Id
+    public int Id
     {
         get
         {

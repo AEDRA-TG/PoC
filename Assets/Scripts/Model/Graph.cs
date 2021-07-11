@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Graph
@@ -63,18 +64,19 @@ public class Graph
         return newEdge;
     }*/
 
-    public void addBidirectionalEdge(int origin, int destination, GameObject edgePrefab){
+    public void addBidirectionalEdge(GameObject edgePrefab, string origin, string destination){
+        int originId = Int16.Parse(origin.Replace("Node_", ""));
+        int destinationId = Int16.Parse(destination.Replace("Node_", ""));
+        if(!edgeAlreadyExists(originId, destinationId)){
+            List<int> aux = adjacentMtx[originId];
+            aux.Add(destinationId);
+            adjacentMtx[originId] = aux;
+            List<int> aux2 = adjacentMtx[destinationId];
+            aux.Add(originId);
+            adjacentMtx[destinationId] = aux2;
 
-        if(!edgeAlreadyExists(origin, destination)){
-            List<int> aux = adjacentMtx[origin];
-            aux.Add(destination);
-            adjacentMtx[origin] = aux;
-            List<int> aux2 = adjacentMtx[destination];
-            aux.Add(origin);
-            adjacentMtx[destination] = aux2;
-
-            GameObject originNode = GameObject.Find("Node_" + origin);
-            GameObject destinationNode = GameObject.Find("Node_" + destination);
+            GameObject originNode = GameObject.Find(origin);
+            GameObject destinationNode = GameObject.Find(destination);
             bool status = Edge.CreateLink(edgePrefab, originNode, destinationNode);
         }
 

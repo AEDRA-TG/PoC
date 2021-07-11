@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GraphController : MonoBehaviour
 {
+    //Material
+    [SerializeField]
+    private Material material;
+    //Object selection
+    private ObjectSelection objectSelection;
     //Grafo
     private Graph projectedGraph;
     [SerializeField]
@@ -45,6 +50,7 @@ public class GraphController : MonoBehaviour
     void Start()
     {
         projectedGraph = new Graph();
+        objectSelection = FindObjectOfType<ObjectSelection>();
     }
 
     
@@ -53,6 +59,7 @@ public class GraphController : MonoBehaviour
         //Setea estos valores a las variables dentro de la clase link
         Link.intendedLinkLength = linkIntendedLinkLength;
         Link.forceStrength = linkForceStrength;
+        Link.material = material;
     }
     
     //Metodo que se ejecuta cuando se añade un nodo
@@ -64,7 +71,9 @@ public class GraphController : MonoBehaviour
 
     //Metodo que se ejecuta cuando se añade una arista
     public void onClickAddLink(int linksCount){
-        projectedGraph.addBidirectionalEdge(originNode,destinationNode,edgePrefab);
+        if(objectSelection.selectedObjects.Count == 2){
+            projectedGraph.addBidirectionalEdge(edgePrefab, objectSelection.selectedObjects[0], objectSelection.selectedObjects[1]);
+        }
     }
 
 
