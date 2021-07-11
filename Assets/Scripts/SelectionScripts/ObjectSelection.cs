@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class ObjectSelection : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public class ObjectSelection : MonoBehaviour
 
     [SerializeField]
     private Color noSelectedColor = Color.white;
+    public List<string> selectedObjects;
+    public string projectedObjectName;
+
+    void Start() {
+        selectedObjects = new List<string>();
+    }
 
     void Update()
     {
@@ -25,6 +33,7 @@ public class ObjectSelection : MonoBehaviour
                     hitObject.transform.GetComponent<ProjectedObject>();
                 if (selectedObject != null)
                 {
+                    projectedObjectName = hitObject.collider.gameObject.name;
                     UpdateSelectedObjectStatus (selectedObject);
                 }
             }
@@ -47,6 +56,7 @@ public class ObjectSelection : MonoBehaviour
                         hitObject.transform.GetComponent<ProjectedObject>();
                     if (selectedObject != null)
                     {
+                        projectedObjectName = hitObject.collider.gameObject.name;
                         UpdateSelectedObjectStatus (selectedObject);
                     }
                 }
@@ -63,11 +73,13 @@ public class ObjectSelection : MonoBehaviour
         {
             selectedObject.Selected = false;
             meshRenderer.material.color = noSelectedColor;
+            selectedObjects.Remove(projectedObjectName);
         }
         else
         {
             selectedObject.Selected = true;
             meshRenderer.material.color = selectedColor;
+            selectedObjects.Add(projectedObjectName);
         }
     }
 }
