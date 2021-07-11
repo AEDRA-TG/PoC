@@ -71,6 +71,7 @@ public abstract class Node : MonoBehaviour
     }
     public static GameObject ShowNode(GameObject nodePrefab,Vector3 coordinate, int posNode){
         nodePrefab = Instantiate(nodePrefab, coordinate, Quaternion.identity);
+        nodePrefab.transform.localPosition = coordinate;
         nodePrefab.transform.parent = GameObject.Find("Graph").transform;
         nodePrefab.name = "Node_" + (posNode);
         return nodePrefab.transform.GetChild(0).gameObject;

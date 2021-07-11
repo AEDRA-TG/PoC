@@ -44,6 +44,7 @@ public class Graph
         Node newNode = null;
         // Se calcula una posición random en el espacio
         Vector3 nodePosition = new Vector3(UnityEngine.Random.Range(0, nodeVectorGenRange), UnityEngine.Random.Range(0, nodeVectorGenRange), UnityEngine.Random.Range(0, nodeVectorGenRange));
+        nodePosition = new Vector3(0,0,0);
         List<int> relations = new List<int>();
         adjacentMtx.Add(nodes.Count,relations);
         GameObject objReturn = Node.ShowNode(nodePrefab, nodePosition, nodes.Count);
