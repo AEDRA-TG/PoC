@@ -20,7 +20,8 @@ public class OptionsMenuItem : MonoBehaviour
         index = trans.GetSiblingIndex() - 1;
 
         button = GetComponent<Button>();
-        button.onClick.AddListener(onItemClick);
+        //button.onClick.AddListener(onItemClick);
+
     }
 
     void onItemClick(){
@@ -28,6 +29,6 @@ public class OptionsMenuItem : MonoBehaviour
     }
 
     void OnDestroy() {
-        button.onClick.RemoveListener(onItemClick);
+        //button.onClick.RemoveListener(onItemClick);
     }
 }

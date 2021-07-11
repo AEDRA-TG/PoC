@@ -4,14 +4,6 @@ using DG.Tweening;
 
 public class OptionsMenu : MonoBehaviour
 {
-    [Header("Space between menu items")]
-    [SerializeField] Vector2 spacing;
-
-    [Space] 
-    [Header ("Main button rotation")]
-    [SerializeField] float rotationDuration;
-    [SerializeField] Ease rotationEase; 
-
     [Space] 
     [Header ("Animation")]
     [SerializeField] float expandDuration;
@@ -53,7 +45,6 @@ public class OptionsMenu : MonoBehaviour
         mainButton.transform.SetAsLastSibling();
         //save position of hamburguer position
         mainButtonPosition = mainButton.transform.position;
-
         ResetPositions();
     }
 
@@ -106,16 +97,13 @@ public class OptionsMenu : MonoBehaviour
     public void OnItemClick(int index){
         switch(index){
             case 0:
-                Debug.Log("Añadir nodo");
                 Utils.sendToast("Añadir nodo");
                 break;
             case 1:
-                Debug.Log("Eliminar nodo");
                 Utils.sendToast("Eliminar nodo");
                 break;
 
             case 2:
-                Debug.Log("Recorrer ED");
                 Utils.sendToast("Recorrer ED");
                 break;
         }
