@@ -64,7 +64,7 @@ public class DrawObject : MonoBehaviour
 
     public static void reposition(string unityParent)
     {
-        float speed = 1;
+        //float speed = 1;
         Vector3 imageTargetPosition = GameObject.Find(unityParent).transform.position;
         GameObject tree = GameObject.Find("TestTree");
         tree.transform.position = imageTargetPosition;
