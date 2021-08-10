@@ -17,12 +17,10 @@ public class testController : MonoBehaviour
         prefab.transform.parent = GameObject.Find(unityParent).transform;
         prefab.name = "Node_" + (DrawObject.POS_NODE++);
         DrawObject.POS_NODE++; 
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
