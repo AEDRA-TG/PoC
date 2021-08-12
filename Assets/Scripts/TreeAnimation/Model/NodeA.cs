@@ -17,6 +17,7 @@ namespace TreeAnimation.Model
             this.value = value;
             this.ID = value;
             OperationNotifier?.Invoke(this.ID);
+            //OperationNotifier?.Invoke(new CreateNodeAnimation(this.ID));
         }
 
         public NodeA AddNode(int value)
@@ -50,6 +51,7 @@ namespace TreeAnimation.Model
                 }
             }
             OperationNotifier?.Invoke(this.ID);
+            //OperationNotifier?.Invoke(new PaintNodeAnimation(this.ID));
             return added;
         }
     }

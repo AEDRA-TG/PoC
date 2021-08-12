@@ -28,6 +28,7 @@ namespace TreeAnimation.View
             TreeControllerA.OperationNotifier -= OnOperationComplete;
         }
 
+        //Add elements to animationList
         private void AddObject(int ID)
         {
             animationList.Add(ID);
