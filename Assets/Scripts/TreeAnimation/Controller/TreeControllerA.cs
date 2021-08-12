@@ -20,7 +20,6 @@ namespace TreeAnimation.Controller
         {
             NodeA added = tree.AddNode(value);
             OperationNotifier?.Invoke();
-            //OperationNotifier?.Invoke();
         }
     }
 }

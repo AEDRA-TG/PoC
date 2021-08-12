@@ -1,4 +1,7 @@
 using System;
+using TreeAnimation.View;
+using TreeAnimation.Utils;
+using UnityEngine;
 
 namespace TreeAnimation.Model
 {
@@ -10,19 +13,18 @@ namespace TreeAnimation.Model
         public int ID { set; get; }
 
         //----------- Actions -----------
-        public static event Action<int> OperationNotifier;
+        public static event Action<IAnimationStrategy> OperationNotifier;
 
         public NodeA(int value)
         {
             this.value = value;
             this.ID = value;
-            OperationNotifier?.Invoke(this.ID);
-            //OperationNotifier?.Invoke(new CreateNodeAnimation(this.ID));
         }
 
         public NodeA AddNode(int value)
         {
             NodeA added = null;
+            OperationNotifier?.Invoke(new PaintObjectAnimation(this.ID, ConstansA.PaintObjectColor));
             // Left
             if (value < this.value)
             {
@@ -34,6 +36,7 @@ namespace TreeAnimation.Model
                 {
                     leftChild = new NodeA(value);
                     added = leftChild;
+                    OperationNotifier?.Invoke(new CreateObjectAnimation(added.ID, this.ID));
                 }
 
             }
@@ -48,10 +51,9 @@ namespace TreeAnimation.Model
                 {
                     rightChild = new NodeA(value);
                     added = rightChild;
+                    OperationNotifier?.Invoke(new CreateObjectAnimation(added.ID, this.ID));
                 }
             }
-            OperationNotifier?.Invoke(this.ID);
-            //OperationNotifier?.Invoke(new PaintNodeAnimation(this.ID));
             return added;
         }
     }

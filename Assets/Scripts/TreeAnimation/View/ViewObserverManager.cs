@@ -8,35 +8,37 @@ namespace TreeAnimation.View
     public class ViewObserverManager : MonoBehaviour
     {
 
-        private List<int> animationList;
+        private List<IAnimationStrategy> animationList;
         private StructureProjection _structureProjection;
 
         private void Awake()
         {
-            this.animationList = new List<int>();
+            this.animationList = new List<IAnimationStrategy>();
             this._structureProjection = FindObjectOfType<StructureProjection>();
         }
         private void OnEnable()
         {
             NodeA.OperationNotifier += AddObject;
+            TreeA.OperationNotifier += AddObject;
             TreeControllerA.OperationNotifier += OnOperationComplete;
 
         }
         private void OnDisable()
         {
             NodeA.OperationNotifier -= AddObject;
+            TreeA.OperationNotifier -= AddObject;
             TreeControllerA.OperationNotifier -= OnOperationComplete;
         }
 
         //Add elements to animationList
-        private void AddObject(int ID)
+        private void AddObject(IAnimationStrategy objectAnimation)
         {
-            animationList.Add(ID);
+            animationList.Add(objectAnimation);
         }
 
         private void OnOperationComplete()
         {
-            this._structureProjection.CreateTreeProjection(this.animationList);
+            this._structureProjection.ExecuteAnimations(this.animationList);
             animationList.Clear();
         }
 

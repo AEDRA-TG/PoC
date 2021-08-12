@@ -1,7 +1,7 @@
-
+using DG.Tweening;
 namespace TreeAnimation.View
 {
     public interface IAnimationStrategy {
-        public void Animate();
+        Tween Animate();
     }
 }

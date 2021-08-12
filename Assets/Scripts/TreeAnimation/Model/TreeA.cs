@@ -1,10 +1,12 @@
-using TreeAnimation.Model;
+using System;
+using TreeAnimation.View;
 
 namespace TreeAnimation.Model
 {
     public class TreeA
     {
         private NodeA root;
+        public static event Action<IAnimationStrategy> OperationNotifier;
 
         public TreeA()
         {
@@ -22,6 +24,7 @@ namespace TreeAnimation.Model
             {
                 created = new NodeA(value);
                 root = created;
+                OperationNotifier?.Invoke(new CreateObjectAnimation(root.ID));
             }
             return created;
         }
