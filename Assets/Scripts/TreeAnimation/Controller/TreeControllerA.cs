@@ -1,18 +1,25 @@
 using System;
-public class TreeControllerA{
-    private TreeA tree;
+using TreeAnimation.Model;
 
-    //----------- Actions -----------
-    public static event Action OperationNotifier;
-
-    public TreeControllerA()
+namespace TreeAnimation.Controller
+{
+    public class TreeControllerA
     {
-        tree = new TreeA();
-    }
+        private TreeA tree;
+        private int id;
 
-    public void AddNode(int value)
-    {
-        NodeA added = tree.AddNode(value);
-        OperationNotifier?.Invoke();
+        //----------- Actions -----------
+        public static event Action OperationNotifier;
+
+        public TreeControllerA()
+        {
+            tree = new TreeA();
+        }
+
+        public void AddNode(int value)
+        {
+            NodeA added = tree.AddNode(value);
+            OperationNotifier?.Invoke();
+        }
     }
 }

@@ -12,11 +12,11 @@ public class TreeController : MonoBehaviour
         bool created = tree.addChild(value);
         if (created)
         {
-            Utils.sendToast("Node created: " + value);
+            //Utils.sendToast("Node created: " + value);
         }
         else
         {
-            Utils.sendToast("Node not created: " + value);
+            //Utils.sendToast("Node not created: " + value);
         }
         //DrawObject.reposition("ImageTarget");
     }

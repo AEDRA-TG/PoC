@@ -1,20 +1,29 @@
-public class TreeA {
-    private NodeA root;
+using TreeAnimation.Model;
 
-    public TreeA(){
-        root = null;
-    }
-
-    public NodeA AddNode(int value)
+namespace TreeAnimation.Model
+{
+    public class TreeA
     {
-        NodeA created = null;
-        if(root!=null){
-            created = root.AddNode(value);
+        private NodeA root;
+
+        public TreeA()
+        {
+            root = null;
         }
-        else{
-            created = new NodeA(value);
-            root = created;
+
+        public NodeA AddNode(int value)
+        {
+            NodeA created = null;
+            if (root != null)
+            {
+                created = root.AddNode(value);
+            }
+            else
+            {
+                created = new NodeA(value);
+                root = created;
+            }
+            return created;
         }
-        return created;
     }
 }

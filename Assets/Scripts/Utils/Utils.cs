@@ -1,5 +1,5 @@
 
-public class Utils 
+public class UtilsA
 {
     public static void sendToast(string text)
     {

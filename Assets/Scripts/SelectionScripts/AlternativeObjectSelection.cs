@@ -69,7 +69,7 @@ public class AlternativeObjectSelection : MonoBehaviour
         if(multiselectionMode && selectedObjects.Count == 0){
             multiselectionMode = false;
             Debug.Log("MUTISELECTION OFF");
-            Utils.sendToast("Multiselección desactivada");
+            //Utils.sendToast("Multiselección desactivada");
             toggleBackButton(true);
         }
 
@@ -77,7 +77,7 @@ public class AlternativeObjectSelection : MonoBehaviour
             pointerDownTimer += Time.deltaTime;
             if(pointerDownTimer >= requieredHoldTime){
                 Debug.Log("MULTISELECTION ON");
-                Utils.sendToast("Multiselección activada");
+                //Utils.sendToast("Multiselección activada");
                 toggleBackButton(false);
                 multiselectionMode = true;
                 Reset();
@@ -194,7 +194,7 @@ public class AlternativeObjectSelection : MonoBehaviour
 
     public void exitMultiSelectionMode()
     {
-        Utils.sendToast("Multiselección desactivada");
+        //Utils.sendToast("Multiselección desactivada");
         toggleBackButton(true);
         multiselectionMode = false;
         while(selectedObjects.Count > 0)

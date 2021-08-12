@@ -97,14 +97,14 @@ public class OptionsMenu : MonoBehaviour
     public void OnItemClick(int index){
         switch(index){
             case 0:
-                Utils.sendToast("Añadir nodo");
+                //Utils.sendToast("Añadir nodo");
                 break;
             case 1:
-                Utils.sendToast("Eliminar nodo");
+                //Utils.sendToast("Eliminar nodo");
                 break;
 
             case 2:
-                Utils.sendToast("Recorrer ED");
+                //Utils.sendToast("Recorrer ED");
                 break;
         }
     }
